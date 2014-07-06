@@ -3,10 +3,19 @@ module LightNotes
     register SassInitializer
     register Padrino::Mailer
     register Padrino::Helpers
+    register Padrino::Admin::AccessControl
 
     enable :sessions
 
+    enable :authentication
+    enable :store_location
+    set    :login_page, "/login"
+
+    access_control.roles_for :any do |role|
+      role.protect "/notes"
+    end
     ##
+
     # Caching support.
     #
     # register Padrino::Cache
