@@ -1,0 +1,9 @@
+---
+:orm: mongoid
+:test: rspec
+:mock: none
+:script: jquery
+:renderer: slim
+:stylesheet: sass
+:namespace: LightNotes
+:migration_format: number
