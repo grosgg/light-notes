@@ -7,3 +7,4 @@
 :stylesheet: sass
 :namespace: LightNotes
 :migration_format: number
+:admin_renderer: slim

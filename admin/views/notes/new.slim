@@ -1,0 +1,7 @@
+ul class="nav nav-tabs"
+  li = link_to tag_icon(:list, pat(:list)), url(:notes, :index)
+  li class="active" = link_to tag_icon(:plus, pat(:new)), url(:notes, :new)
+
+div class="tabs-content"
+  = form_for :note, url(:notes, :create), :class => 'form-horizontal' do |f|
+    = partial 'notes/form', :locals => { :f => f }
