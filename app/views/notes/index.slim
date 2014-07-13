@@ -1,4 +1,4 @@
+h3 Light Notes
+ul
 - for note in @notes do
-  p = note.title
-
-div = button_to 'Logout',  url(:sessions, :destroy), :method => :delete, :class => :form
+	li = link_to note.title, url(:notes, :show, :id => note._id)

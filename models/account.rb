@@ -9,6 +9,9 @@ class Account
   field :crypted_password, :type => String
   field :role,             :type => String
 
+  # Relations
+  has_many :notes
+
   # Validations
   validates_presence_of     :email, :role
   validates_presence_of     :password,                   :if => :password_required

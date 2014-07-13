@@ -1,6 +1,6 @@
 LightNotes::App.controllers :sessions do
   get :new do
-    render "/sessions/new", nil, :layout => false
+    render "/sessions/new", nil
   end
 
   post :create do
@@ -9,7 +9,7 @@ LightNotes::App.controllers :sessions do
       redirect url(:notes, :index)
     else
       params[:email] = h(params[:email])
-      render "/sessions/new", nil, :layout => false
+      render "/sessions/new", nil
     end
   end
 

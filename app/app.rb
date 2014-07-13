@@ -22,6 +22,8 @@ module LightNotes
       role.project_module :notes, '/notes'
     end
 
+    layout  :layout
+
     # Caching support.
     #
     # register Padrino::Cache
