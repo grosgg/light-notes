@@ -1,5 +1,5 @@
 LightNotes::App.controllers :notes do
-  
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -18,8 +18,8 @@ LightNotes::App.controllers :notes do
   # get '/example' do
   #   'Hello world!'
   # end
-  
-  get :index do
+
+  get :index, :map => '/*', :priority => :low do
     @notes = Note.all
     render 'notes/index'
   end

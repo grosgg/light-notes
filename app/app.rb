@@ -9,12 +9,17 @@ module LightNotes
 
     enable :authentication
     enable :store_location
-    set    :login_page, "/login"
+
+    set    :admin_model, 'Account'
+    set    :login_page, "/sessions/new"
 
     access_control.roles_for :any do |role|
-      role.protect "/notes"
+      role.protect "/"
     end
-    ##
+
+    access_control.roles_for :user do |role|
+      role.project_module :notes, '/notes'
+    end
 
     # Caching support.
     #

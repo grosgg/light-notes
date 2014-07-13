@@ -1,0 +1,19 @@
+doctype 5
+html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  head
+    meta content='text/html; charset=utf-8' http-equiv='Content-Type'
+    meta name='viewport' content='width=device-width,initial-scale=1'
+    title = @title.present? ? "#{@title} | Light Notes" : "#{pat('login.title')} | Light Notes"
+    = favicon_tag 'favicon.ico'
+
+  body
+    = form_tag url(:sessions, :create) do
+      div class='form-group'
+        label for="email" = pat('login.email')
+        div = email_field_tag :email, :id => :email, :value => params[:email], :autofocus => true
+
+      div class='form-group'
+        label for="password" = pat('login.password')
+        div = password_field_tag :password, :id => :password
+
+      div = submit_tag(pat('login.sign_in'), :class => 'btn btn-primary pull-right')

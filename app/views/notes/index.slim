@@ -1,2 +1,4 @@
 - for note in @notes do
   p = note.title
+
+div = button_to 'Logout',  url(:sessions, :destroy), :method => :delete, :class => :form
