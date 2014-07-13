@@ -1,5 +1,5 @@
 LightNotes::Admin.controllers :notes do
-  get :index do
+  get :index, :map => '/*', :priority => :low do
     @title = "Notes"
     @notes = Note.all
     render 'notes/index'
@@ -78,9 +78,9 @@ LightNotes::Admin.controllers :notes do
     end
     ids = params[:note_ids].split(',').map(&:strip)
     notes = Note.find(ids)
-    
+
     if notes.each(&:destroy)
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Notes', :ids => "#{ids.to_sentence}")
     end
     redirect url(:notes, :index)

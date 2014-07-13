@@ -22,7 +22,7 @@ module LightNotes
       role.project_module :notes, '/notes'
     end
 
-    layout  :layout
+    layout :layout
 
     # Caching support.
     #
