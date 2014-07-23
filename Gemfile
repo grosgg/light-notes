@@ -26,7 +26,5 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
 
-# Or Individual Gems
-# %w(core support gen helpers cache mailer admin).each do |g|
-#   gem 'padrino-' + g, '0.12.2'
-# end
+# Deployment
+gem 'capistrano', '~> 3.2.1'
