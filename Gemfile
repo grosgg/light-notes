@@ -28,3 +28,6 @@ gem 'padrino', '0.12.2'
 
 # Deployment
 gem 'capistrano', '~> 3.2.1'
+gem 'capistrano-rbenv'
+gem 'capistrano-bundler'
+
