@@ -2,7 +2,7 @@ app_path = "/home/deploy/light-notes"
 current_path = "#{app_path}/current"
 shared_path = "#{app_path}/shared"
 
-worker_processes 4
+worker_processes 1
 
 listen "#{shared_path}/unicorn.sock", :backlog => 64
 
