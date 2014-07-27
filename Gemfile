@@ -31,3 +31,6 @@ gem 'capistrano', '~> 3.2.1'
 gem 'capistrano-rbenv'
 gem 'capistrano-bundler'
 
+group :production do
+  gem "unicorn"
+end
