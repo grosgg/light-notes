@@ -34,6 +34,8 @@ set :deploy_to, '/home/deploy/light-notes'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+set :unicorn_env, :rails_env
+
 set :rbenv_type, :local # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
@@ -52,6 +54,7 @@ namespace :deploy do
 
   after :publishing, :restart
 
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -62,3 +65,5 @@ namespace :deploy do
   end
 
 end
+
+after 'deploy:restart', 'unicorn:restart'

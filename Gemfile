@@ -26,10 +26,13 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
 
-# Deployment
-gem 'capistrano', '~> 3.2.1'
-gem 'capistrano-rbenv'
-gem 'capistrano-bundler'
+group :development do
+  # Deployment
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-unicorn'
+end
 
 group :production do
   gem "unicorn"
