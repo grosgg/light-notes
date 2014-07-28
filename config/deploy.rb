@@ -1,8 +1,12 @@
+require 'capistrano-unicorn'
+require 'capistrano/ext/multistage'
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
 set :application, 'light-notes'
 set :repo_url, 'git@github.com:grosgg/light-notes.git'
+set :stages, %w(production)
+set :default_stage, "production"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
