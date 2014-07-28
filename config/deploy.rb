@@ -1,5 +1,3 @@
-require 'capistrano-unicorn'
-require 'capistrano/ext/multistage'
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
@@ -53,6 +51,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+      invoke 'unicorn:restart'
     end
   end
 

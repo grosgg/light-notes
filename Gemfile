@@ -31,7 +31,7 @@ group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano-unicorn', :require => false
+  gem 'capistrano3-unicorn'
 end
 
 group :production do
