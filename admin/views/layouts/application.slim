@@ -43,4 +43,4 @@ html lang='en'
           li = link_to tag_icon(:home, 'sabu'), 'http://www.sabu.fr', :target => :_blank, :class => 'footer-links-link'
           li = link_to tag_icon(:github, 'code'), 'https://github.com/grosgg/light-notes', :target => :_blank, :class => 'footer-links-link'
 
-    =javascript_include_tag 'jquery-1.9.0.min', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab]), :application
+    =javascript_include_tag 'jquery-1.9.0.min', (Padrino.env == :deployment ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab]), :application

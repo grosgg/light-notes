@@ -34,6 +34,6 @@ group :development do
   gem 'capistrano3-unicorn'
 end
 
-group :production do
+group :deployment do
   gem "unicorn"
 end

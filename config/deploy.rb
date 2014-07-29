@@ -4,8 +4,6 @@ lock '3.2.1'
 set :application, 'light-notes'
 set :repo_url, 'git@github.com:grosgg/light-notes.git'
 
-set(:unicorn_env) { rails_env }
-
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 

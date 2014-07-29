@@ -5,8 +5,7 @@ port = 27017
 
 database_name = case Padrino.env
   when :development then 'light_notes_development'
-  when :production  then 'light_notes_production'
-  when :test        then 'light_notes_test'
+  when :deployment  then 'light_notes_deployment'
 end
 
 # Use MONGO_URI if it's set as an environmental variable.
