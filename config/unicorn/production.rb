@@ -2,13 +2,15 @@ app_path = "/home/deploy/light-notes"
 current_path = "#{app_path}/current"
 shared_path = "#{app_path}/shared"
 
+rails_env = ENV['RAILS_ENV'] || 'production'
+
 worker_processes 1
 
-listen "#{shared_path}/unicorn.sock", :backlog => 64
+listen "#{shared_path}/tmp/sockets/unicorn.sock", :backlog => 64
 
 timeout 60
 
-pid "#{shared_path}/unicorn.pid"
+pid "#{shared_path}/tmp/pids/unicorn.pid"
 
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
 stdout_path "#{shared_path}/log/unicorn.stdout.log"
