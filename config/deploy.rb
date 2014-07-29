@@ -3,8 +3,6 @@ lock '3.2.1'
 
 set :application, 'light-notes'
 set :repo_url, 'git@github.com:grosgg/light-notes.git'
-set :stages, %w(production)
-set :default_stage, "production"
 
 set(:unicorn_env) { rails_env }
 
