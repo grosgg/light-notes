@@ -34,8 +34,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-set :unicorn_env, :rails_env
-
 set :rbenv_type, :local # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.1'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
