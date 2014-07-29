@@ -33,6 +33,7 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
                 | #{pat('login.bypass')}
 
           h3 = RACK_ENV
+          h3 = Padrino.env
 
         div class="login-footer modal-footer"
           = submit_tag(pat('login.sign_in'), :class => 'btn btn-primary pull-right')

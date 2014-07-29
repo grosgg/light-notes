@@ -8,7 +8,6 @@ role :app, %w{deploy@sabu.fr}
 # role :web, %w{deploy@sabu.fr}
 # role :db,  %w{deploy@sabu.fr}
 
-set :rack_env,    'production'
 set :rails_env,   'production'
 
 # Extended Server Syntax
