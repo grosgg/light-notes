@@ -8,6 +8,7 @@ LightNotes::Admin.controllers :notes do
   get :new do
     @title = pat(:new_title, :model => 'note')
     @note = Note.new
+    @accounts = Account.where(role: 'user')
     render 'notes/new'
   end
 
@@ -27,6 +28,7 @@ LightNotes::Admin.controllers :notes do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "note #{params[:id]}")
     @note = Note.find(params[:id])
+    @accounts = Account.where(role: 'user')
     if @note
       render 'notes/edit'
     else
