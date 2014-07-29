@@ -6,6 +6,8 @@ set :repo_url, 'git@github.com:grosgg/light-notes.git'
 set :stages, %w(production)
 set :default_stage, "production"
 
+set(:unicorn_env) { rails_env }
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
