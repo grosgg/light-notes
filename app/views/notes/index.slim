@@ -4,6 +4,6 @@ ul
     = link_to url(:notes, :show, :id => note._id.to_s), class: 'list-group-item' do
     	span
     		= "#{note.title} "
-    		- if 2.days.ago - note.updated_at > 0
+    		- if note.updated_at - 2.days.ago > 0
     			span.label.label-info New
     	span.pull-right = "#{time_ago_in_words note.updated_at} ago"
