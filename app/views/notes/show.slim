@@ -1,4 +1,9 @@
-h3 = @note.title
-p = @note.body
+h1 = @note.title
+hr
 
-div = link_to 'Back', url(:notes, :index)
+p = @body.html_safe
+
+hr
+div
+  = link_to 'Download as PDF', url(:notes, :index), class: 'btn btn-info btn-block'
+  = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'

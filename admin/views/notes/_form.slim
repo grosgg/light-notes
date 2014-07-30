@@ -11,7 +11,7 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
 fieldset class='control-group#{error ? ' has-error' : ''}'
   = f.label :account, :class => 'control-label'
   div class='controls'
-    = f.select :account, :collection => @accounts, :fields => [:name, :_id.to_s], :selected => @note.account_id, :include_blank => true, :class => 'form-control input-large input-with-feedback'
+    = f.select :account_id, :collection => @accounts, :fields => [:name, :_id.to_s], :selected => @note.account_id, :include_blank => true, :class => 'form-control input-large input-with-feedback'
 
 div class="form-actions"
   = f.submit pat(:save), :class => 'btn btn-primary'

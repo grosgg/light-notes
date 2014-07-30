@@ -26,6 +26,9 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
 
+# Markdown gems
+gem 'redcarpet', '~> 3.1.2'
+
 group :development do
   # Deployment
   gem 'capistrano', '~> 3.2.1'

@@ -1,10 +1,10 @@
-div = form_tag url(:sessions, :create) do
-  div class='form-group'
+= form_tag url(:sessions, :create) do
+  div.form-group
     label for="email" = pat('login.email')
-    div = email_field_tag :email, :id => :email, :value => params[:email], :autofocus => true
+    = email_field_tag :email, :id => :email, :value => params[:email], :autofocus => true, :class => 'form-control'
 
-  div class='form-group'
+  div.form-group
     label for="password" = pat('login.password')
-    div = password_field_tag :password, :id => :password
+    = password_field_tag :password, :id => :password, :class => 'form-control'
 
   div = submit_tag(pat('login.sign_in'), :class => 'btn btn-primary pull-right')

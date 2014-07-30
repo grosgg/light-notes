@@ -107,7 +107,7 @@ footer p {
 /*     margin-left: 0px; */
 /*   } */
 /* } */
-@media (-webkit-device-pixel-ratio: 2) and (orientation:portrait) {
+@media (-webkit-device-pixel-ratio: 2) and (orientation:portrait), (-webkit-device-pixel-ratio: 1.5) and (orientation:portrait) {
   .login {
     margin-top: 30px;
     width: 320px;

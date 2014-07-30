@@ -1,4 +1,4 @@
-h3 Light Notes
 ul
 - for note in @notes do
-	li = link_to note.title, url(:notes, :show, :id => note._id)
+  .list-group
+    = link_to note.title, url(:notes, :show, :id => note._id.to_s), class: 'list-group-item'
