@@ -1,7 +1,7 @@
 # Connection.new takes host and port.
 
 host = 'localhost'
-port = 17017
+port = 27017
 
 database_name = case Padrino.env
   when :development then 'light_notes_development'
