@@ -6,4 +6,12 @@ class Note
   field :body,  :type => String
 
   belongs_to :account
+
+  def label
+  	if self.created_at - 2.days.ago > 0
+  		{ text: 'new', type: 'label-info' }
+  	elsif self.updated_at - 2.days.ago > 0
+  		{ text: 'updated', type: 'label-warning' }
+  	end
+  end
 end
