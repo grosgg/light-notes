@@ -28,6 +28,10 @@ LightNotes::App.controllers :evernotes do
     render :index
   end
 
+  post :synchronize do
+    debugger
+  end
+
   # Delete client and remove user credentials from DB
   get :logout do
     @client = nil

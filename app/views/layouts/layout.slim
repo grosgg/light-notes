@@ -5,7 +5,7 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
     meta name='viewport' content='width=device-width,initial-scale=1'
     title = 'Light Notes'
     = favicon_tag 'favicon.ico'
-    = stylesheet_link_tag 'bootstrap'
+    = stylesheet_link_tag 'bootstrap.min'
 
   body
     .container
@@ -13,23 +13,16 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
         .col-md-12.column
           nav.navbar.navbar-default role="navigation"
             .navbar-header
-              button.navbar-toggle data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
               a.navbar-brand href="#"  Light Notes
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-              ul.nav.navbar-nav
               - if current_account
-                = form_tag url(:sessions, :destroy), method: :delete, class: 'navbar-form navbar-right'
-                  = submit_tag 'Logout', class: 'btn btn-default'
-                ul.nav.navbar-nav.navbar-right
-                  p.navbar-text = current_account.name
-                  li.divider
+                p.navbar-text
+                  span.glyphicon.glyphicon-user
+                  = " Logged as #{current_account.name}"
       .row.clearfix
         .col-md-12.column
           =  {:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name}") }.join.html_safe
           = yield
 
       .row.clearfix
+        .col-md-12.column
+          br
