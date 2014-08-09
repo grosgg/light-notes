@@ -9,6 +9,6 @@
 			span.pull-right = "#{time_ago_in_words note.updated_at} ago"
 
 div
-  = link_to 'Evernote Sync', url(:evernotes, :index), class: 'btn btn-success pull-left'
-  = form_tag url(:sessions, :destroy), method: :delete, class: 'pull-right'
-    = submit_tag 'Logout', class: 'btn btn-default'
+  = link_to 'Evernote Sync', url(:evernotes, :index), class: 'btn btn-success btn-block'
+  = form_tag url(:sessions, :destroy), method: :delete, class: 'btn-block'
+    = submit_tag 'Logout', class: 'btn btn-default btn-block'

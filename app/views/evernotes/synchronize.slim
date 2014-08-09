@@ -1,0 +1,17 @@
+h1 Evernote Sync
+
+- unless @success.empty?
+  .alert.alert-success
+    | The following evernotes were successfully imported
+    ul
+      - @success.each do |note|
+        li = note
+
+- unless @fail.empty?
+  .alert.alert-danger
+    | The following evernotes were not imported
+    ul
+      - @fail.each do |note|
+        li = note
+
+= link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'

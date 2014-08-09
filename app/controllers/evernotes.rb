@@ -29,7 +29,29 @@ LightNotes::App.controllers :evernotes do
   end
 
   post :synchronize do
-    debugger
+    if params[:evernotes]
+
+      @success = []
+      @fail = []
+
+      params[:evernotes].map(&:first).each do |evernote_guid|
+        evernote = @client.note_store.getNote(evernote_guid, true, false, false, false)
+        note = Note.find_or_initialize_by(evernote_id: evernote.guid, account: current_account)
+        if note.new_record? || note.updated_at < Time.at(evernote.updated/1000)
+          note.title = evernote.title
+          note.created_at = Time.at(evernote.created/1000)
+          note.updated_at = Time.at(evernote.updated/1000)
+          # TODO Find a way to convert xml to markdown
+          (note.save ? @success : @fail) << note.title
+        else
+          @fail << note.title
+        end
+      end
+      render :synchronize
+    else
+      flash.now[:error] = pat('Please select at least one note to synchronize')
+      render :index
+    end
   end
 
   # Delete client and remove user credentials from DB
@@ -45,7 +67,7 @@ LightNotes::App.controllers :evernotes do
       session[:request_token] = @client.request_token(:oauth_callback => absolute_url(:evernotes, :callback))
       redirect url(:evernotes, :authorize)
     rescue => e
-      flash.now[:error] = pat('couldn\'t get a request token')
+      flash.now[:error] = pat('Couldn\'t get a request token')
       render :index
     end
   end
