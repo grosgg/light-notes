@@ -25,9 +25,13 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
+gem 'byebug', '~> 3.2.0'
 
 # Markdown gems
 gem 'redcarpet', '~> 3.1.2'
+
+# Evernote
+gem 'evernote_oauth', '~> 0.2.3'
 
 group :development do
   # Deployment

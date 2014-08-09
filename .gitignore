@@ -7,3 +7,5 @@ vendor/gems/*
 .sass-cache/*
 db/*.db
 .*.sw*
+config/evernote.rb
+config/secret.rb

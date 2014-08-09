@@ -8,6 +8,7 @@ class Account
   field :email,            :type => String
   field :crypted_password, :type => String
   field :role,             :type => String
+  field :evernote_token,   :type => String
 
   # Relations
   has_many :notes

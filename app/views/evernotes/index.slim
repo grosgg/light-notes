@@ -1,0 +1,12 @@
+h1 Evernote Sync
+
+- if @notebooks
+  ul
+    - @notebooks.each do |nb|
+      li
+        = nb[:name]
+        ul
+          - nb[:notes].each do |n|
+            li = n.title
+- else
+  = link_to 'Sync Now', url(:evernotes, :request_token), class: 'btn btn-large btn-success'

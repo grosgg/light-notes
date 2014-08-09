@@ -35,6 +35,11 @@ Bundler.require(:default, RACK_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  Padrino.dependency_paths << Padrino.root('config/evernote.rb')
+	Padrino.dependency_paths << Padrino.root('config/secret.rb')
+	# if OAUTH_CONSUMER_KEY.empty? || OAUTH_CONSUMER_SECRET.empty?
+ #    halt '<span style="color:red">Evernote settings are missing!</span>'
+ #  end
 end
 
 ##

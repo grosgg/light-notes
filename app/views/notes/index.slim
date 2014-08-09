@@ -7,3 +7,5 @@
 					span.label class=(note.label[:type])
 						= "#{note.label[:text]}"
 			span.pull-right = "#{time_ago_in_words note.updated_at} ago"
+
+= link_to 'Evernote Sync', url(:evernotes, :index), class: 'btn btn-success'
