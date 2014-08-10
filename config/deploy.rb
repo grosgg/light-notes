@@ -52,11 +52,10 @@ namespace :deploy do
   end
 
   desc "Copy config files"
-    task :copy_config do
-      on roles(:app) do |host|
-        %w[ evernote.rb secret.rb ].each do |f|
-          upload! 'config/' + f , '../shared/config/' + f
-        end
+  task :copy_config do
+    on roles(:app) do |host|
+      %w[ evernote.rb secret.rb ].each do |f|
+        upload! 'config/' + f , '/home/deploy/light-notes/shared/config/' + f
       end
     end
   end
