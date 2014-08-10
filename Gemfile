@@ -33,6 +33,9 @@ gem 'reverse_markdown', '~> 0.5.1'
 # Evernote
 gem 'evernote_oauth', '~> 0.2.3'
 
+# PDF Export
+gem 'pdfkit', '~> 0.6.2'
+
 group :development do
   # Deployment
   gem 'byebug', '~> 3.2.0'

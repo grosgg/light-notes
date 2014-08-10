@@ -3,8 +3,9 @@ hr
 
 p = @body.html_safe
 
-hr
-div
-  = link_to url(:notes, :index), class: 'btn btn-info btn-block' do
-    <span class="glyphicon glyphicon-download"></span> Download as PDF
-  = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'
+- unless @format == 'pdf'
+  hr
+  div
+    = link_to url(:notes, :show, :id => @note.id, :format => :pdf), class: 'btn btn-info btn-block' do
+      <span class="glyphicon glyphicon-download"></span> Download as PDF
+    = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'
