@@ -51,6 +51,16 @@ namespace :deploy do
     end
   end
 
+  desc "Copy config files"
+    task :copy_config do
+      on roles(:app) do |host|
+        %w[ evernote.rb secret.rb ].each do |f|
+          upload! 'config/' + f , '../shared/config/' + f
+        end
+      end
+    end
+  end
+
   after :publishing, :restart
 
 
