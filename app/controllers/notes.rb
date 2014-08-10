@@ -9,7 +9,7 @@ LightNotes::App.controllers :notes do
     	redirect url(:notes, :index)
     end
     renderer = Redcarpet::Render::HTML.new(render_options = {})
-    markdown = Redcarpet::Markdown.new(renderer, extensions = {})
+    markdown = Redcarpet::Markdown.new(renderer, tables: true, strikethrough: true)
     @body = markdown.render(@note.body)
     render 'notes/show'
   end
