@@ -25,7 +25,6 @@ gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
-gem 'byebug', '~> 3.2.0'
 
 # Markdown gems
 gem 'redcarpet', '~> 3.1.2'
@@ -36,6 +35,7 @@ gem 'evernote_oauth', '~> 0.2.3'
 
 group :development do
   # Deployment
+  gem 'byebug', '~> 3.2.0'
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
