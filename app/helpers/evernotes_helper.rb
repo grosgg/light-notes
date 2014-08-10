@@ -9,7 +9,6 @@ module LightNotes
       end
 
     end
-
     helpers EvernotesHelper
   end
 end

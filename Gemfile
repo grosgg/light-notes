@@ -29,6 +29,7 @@ gem 'byebug', '~> 3.2.0'
 
 # Markdown gems
 gem 'redcarpet', '~> 3.1.2'
+gem 'reverse_markdown', '~> 0.5.1'
 
 # Evernote
 gem 'evernote_oauth', '~> 0.2.3'

@@ -41,7 +41,7 @@ LightNotes::App.controllers :evernotes do
           note.title = evernote.title
           note.created_at = Time.at(evernote.created/1000)
           note.updated_at = Time.at(evernote.updated/1000)
-          # TODO Find a way to convert xml to markdown
+          note.body = ReverseMarkdown.convert(evernote.content, unknown_tags: :bypass, github_flavored: true)
           (note.save ? @success : @fail) << note.title
         else
           @fail << note.title
