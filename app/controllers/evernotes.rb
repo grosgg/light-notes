@@ -14,7 +14,12 @@ LightNotes::App.controllers :evernotes do
 
   get :index do
     if current_account.evernote_token
-      notebooks = @client.note_store.listNotebooks
+      begin
+        notebooks = @client.note_store.listNotebooks
+      rescue
+        current_account.update(evernote_token: nil)
+        redirect url(:evernotes, :request_token)
+      end
       @notebooks = notebooks.map do |nb|
         note_filter = Evernote::EDAM::NoteStore::NoteFilter.new
         note_filter.notebookGuid = nb.guid
