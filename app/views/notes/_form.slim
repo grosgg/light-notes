@@ -1,0 +1,22 @@
+- error = @note.errors.include?(:title)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :title, :class => 'control-label'
+  div class='controls'
+    = f.text_field :title, :class => 'form-control', :autofocus => true
+- error = @note.errors.include?(:body)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :body, :class => 'control-label'
+  div class='controls'
+    = f.text_area :body, :rows => 10, :class => 'form-control'
+- error = @note.errors.include?(:evernote_id)
+
+- if @note.evernote_id
+  fieldset class='control-group#{error ? ' has-error' : ''}'
+    = f.label :keep_sync, :class => 'control-label'
+    div class='controls'
+      = f.check_box :keep_sync, :class => 'form-control'
+
+hr
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary btn-block'
+  = link_to pat(:cancel), url(:notes, :index), :class => 'btn btn-default btn-block'

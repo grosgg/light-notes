@@ -1,0 +1,4 @@
+h1 Edit note
+hr
+= form_for :note, url(:notes, :update, :id => @note.id), :method => :put, :class => 'form-horizontal' do |f|
+  = partial 'notes/form', :locals => { :f => f }

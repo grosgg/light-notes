@@ -25,4 +25,47 @@ LightNotes::App.controllers :notes do
 
   end
 
+  get :new do
+    @note = Note.new
+    render 'notes/new'
+  end
+
+  post :create do
+    @note = Note.new(params[:note])
+    @note.account = current_account
+    if @note.save
+      flash[:success] = pat(:create_success, :model => 'Note')
+      redirect url(:notes, :index)
+    else
+      flash.now[:error] = pat(:create_error, :model => 'note')
+      render 'notes/new'
+    end
+  end
+
+  get :edit, :with => :id do
+    @note = Note.find(params[:id])
+    if @note
+      render 'notes/edit'
+    else
+      flash[:warning] = pat(:create_error, :model => 'note', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
+  put :update, :with => :id do
+    @note = Note.find(params[:id])
+    if @note
+      if @note.update_attributes(params[:note])
+        flash[:success] = pat(:update_success, :model => 'Note', :id =>  "#{params[:id]}")
+        redirect(url(:notes, :index))
+      else
+        flash.now[:error] = pat(:update_error, :model => 'note')
+        render 'notes/edit'
+      end
+    else
+      flash[:warning] = pat(:update_warning, :model => 'note', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
 end

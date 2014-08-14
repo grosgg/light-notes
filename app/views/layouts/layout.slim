@@ -13,7 +13,7 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
         .col-md-12.column
           nav.navbar.navbar-default role="navigation"
             .navbar-header
-              a.navbar-brand href="#"  Light Notes
+              a.navbar-brand href="#{url(:notes, :index)}"  Light Notes
               - if current_account
                 p.navbar-text
                   span.glyphicon.glyphicon-user

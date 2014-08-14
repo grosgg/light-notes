@@ -8,4 +8,5 @@ p = @body.html_safe
   div
     = link_to url(:notes, :show, :id => @note.id, :format => :pdf), class: 'btn btn-info btn-block' do
       <span class="glyphicon glyphicon-download"></span> Download as PDF
+    = link_to 'Edit', url(:notes, :edit, :id => @note.id), class: 'btn btn-warning btn-block'
     = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'
