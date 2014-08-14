@@ -10,7 +10,7 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
     = f.text_area :body, :rows => 10, :class => 'form-control'
 - error = @note.errors.include?(:evernote_id)
 
-- if @note.evernote_id
+- unless @note.evernote_id.blank?
   fieldset class='control-group#{error ? ' has-error' : ''}'
     = f.label :keep_synchronized, :class => 'control-label'
     div class='controls'
