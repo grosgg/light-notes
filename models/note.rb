@@ -2,10 +2,10 @@ class Note
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :title,        :type => String
-  field :body,         :type => String
-  field :evernote_id,  :type => String
-  field :keep_sync,    :type => Boolean, :default => false
+  field :title,                :type => String
+  field :body,                 :type => String
+  field :evernote_id,          :type => String
+  field :keep_synchronized,    :type => Boolean, :default => false
 
   belongs_to :account
 

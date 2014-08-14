@@ -12,9 +12,9 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
 
 - if @note.evernote_id
   fieldset class='control-group#{error ? ' has-error' : ''}'
-    = f.label :keep_sync, :class => 'control-label'
+    = f.label :keep_synchronized, :class => 'control-label'
     div class='controls'
-      = f.check_box :keep_sync, :class => 'form-control'
+      = f.check_box :keep_synchronized
 
 hr
 div class="form-actions"
