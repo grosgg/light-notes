@@ -1,6 +1,6 @@
 LightNotes::Admin.controllers :sessions do
   get :new do
-    render "/sessions/new", nil, :layout => false
+    render :new, :layout => false
   end
 
   post :create do
@@ -15,7 +15,7 @@ LightNotes::Admin.controllers :sessions do
     else
       params[:email] = h(params[:email])
       flash.now[:error] = pat('login.error')
-      render "/sessions/new", nil, :layout => false
+      render :new, :layout => false
     end
   end
 
