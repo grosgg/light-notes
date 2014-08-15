@@ -9,6 +9,7 @@ LightNotes::App.controllers :sessions do
       redirect url(:notes, :index)
     else
       params[:email] = h(params[:email])
+      flash.now[:error] = pat('login.error')
       render "/sessions/new", nil
     end
   end

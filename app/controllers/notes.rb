@@ -5,6 +5,7 @@ LightNotes::App.controllers :notes do
   end
 
   get :show, :with => :id, :provides => [:html, :pdf] do
+    puts url(:notes, :new)
     unless @note = current_account.notes.where(_id: params[:id]).first
     	redirect url(:notes, :index)
     end

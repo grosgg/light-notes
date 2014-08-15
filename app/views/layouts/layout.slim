@@ -13,7 +13,7 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 
   body
     .container
-      - if [url(:sessions, :new), url(:notes, :index)].include? current_path
+      - if route.controller == 'sessions' || current_path == url(:notes, :index)
         .row.clearfix
           .col-md-12.column
             .panel.panel-default
