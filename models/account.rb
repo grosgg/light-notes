@@ -47,12 +47,12 @@ class Account
     ::BCrypt::Password.new(crypted_password) == password
   end
 
-  def synchronize!
+  def synchronize!(app_logger)
     client = EvernoteOAuth::Client.new(token: evernote_token, consumer_key:OAUTH_CONSUMER_KEY, consumer_secret:OAUTH_CONSUMER_SECRET, sandbox: SANDBOX)
     state = client.note_store.getSyncState()
     if state.updateCount > last_sync
       notes.nin(evernote_id: [nil, '']).where(keep_synchronized: true).each do |note|
-        logger.info "Synchronize note '#{note.evernote_id}'"
+        app_logger.info "Synchronize note '#{note.evernote_id}'"
         evernote = client.note_store.getNote(note.evernote_id, true, false, false, false)
         note.title = evernote.title
         note.created_at = Time.at(evernote.created/1000)
@@ -64,7 +64,7 @@ class Account
       self.last_sync = state.updateCount
       save
     else
-      logger.info "No changes were made on Evernote since last synchronization"
+      app_logger.info "No changes were made on Evernote since last synchronization"
       true
     end
   end
