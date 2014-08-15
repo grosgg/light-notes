@@ -13,8 +13,8 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 
   body
     = form_tag url(:sessions, :create), :authenticity_token => session[:csrf], :class=>'login form-horizontal' do
-      div class="login-header modal-header"
-        div class="login-logo" = image_tag('logo.png', :alt => "Light Notes' logo", :width => 470)
+      div class="login-header"
+        div class="login-logo" = image_tag('logo.png', :alt => "Light Notes' logo", :width => '90%', :class => "img-thumbnail")
       div class="login-body modal-body"
         = {:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe
 
@@ -33,6 +33,6 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
                 = check_box_tag :bypass
                 | #{pat('login.bypass')}
 
-      div class="login-footer modal-footer"
         = submit_tag(pat('login.sign_in'), :class => 'btn btn-primary pull-right')
+
     = javascript_include_tag 'jquery-1.9.0.min', (Padrino.env == :deployment ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab]), :application

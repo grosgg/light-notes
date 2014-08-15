@@ -4,6 +4,7 @@ html, body {
 }
 body {
   font-size: 13px;
+  background: url(/images/dimension.png);
 }
 .main {
   min-height: 100%;
@@ -111,7 +112,7 @@ footer p {
     width: 320px;
   }
   .login-header {
-    display: none;
+    /*display: none;*/
   }
   .login-body {
     padding: 10px 20px !important;

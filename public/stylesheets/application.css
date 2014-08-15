@@ -1,5 +1,4 @@
 body {
-  /*background: url(/images/congruent_pentagon.png);*/
   background: url(/images/dimension.png);
   padding-top: 20px;
 }
@@ -7,12 +6,6 @@ body {
 .logged-as {
   float: right;
   font-size: 12px;
-}
-
-.navbar {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
 }
 
 .panel-body > h1 {
