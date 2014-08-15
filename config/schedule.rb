@@ -1,4 +1,4 @@
-set :output, "log/:environment.log"
+set :output, "log/#{RACK_ENV}.log"
 job_type :padrino_rake, "cd :path && RACK_ENV=:environment bundle exec rake :task --silent :output"
 
 every 10.minutes do
