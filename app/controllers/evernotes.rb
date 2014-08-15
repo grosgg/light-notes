@@ -33,26 +33,18 @@ LightNotes::App.controllers :evernotes do
     render :index
   end
 
-  post :synchronize do
+  post :set_sync do
     if params[:evernotes]
 
       @success = []
       @fail = []
 
       params[:evernotes].map(&:first).each do |evernote_guid|
-        evernote = @client.note_store.getNote(evernote_guid, true, false, false, false)
-        note = Note.find_or_initialize_by(evernote_id: evernote.guid, account: current_account)
-        if note.new_record? || note.updated_at < Time.at(evernote.updated/1000)
-          note.title = evernote.title
-          note.created_at = Time.at(evernote.created/1000)
-          note.updated_at = Time.at(evernote.updated/1000)
-          note.body = ReverseMarkdown.convert(evernote.content, unknown_tags: :bypass, github_flavored: true)
-          (note.save ? @success : @fail) << note.title
-        else
-          @fail << note.title
-        end
+        note = Note.find_or_initialize_by(evernote_id: evernote_guid, account: current_account)
+        note.keep_synchronized = true
+        (note.save ? @success : @fail) << evernote_guid
       end
-      render :synchronize
+      render :set_sync
     else
       flash.now[:error] = pat('Please select at least one note to synchronize')
       render :index

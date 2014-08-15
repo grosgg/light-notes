@@ -1,3 +1,6 @@
+- if Note.nin(evernote_id: [nil, '']).in(title: [nil, '']).count > 0
+  .alert.alert-info Some notes are waiting to be imported from Evernote. Please refresh this page in a few minutes.
+
 .list-group
 	- for note in @notes do
 		= link_to url(:notes, :show, :id => note._id.to_s), class: 'list-group-item' do
@@ -10,6 +13,6 @@
 
 div
   = link_to 'New note', url(:notes, :new), class: 'btn btn-primary btn-block'
-  = link_to 'Evernote Sync', url(:evernotes, :index), class: 'btn btn-success btn-block'
+  button data-loading-text= "Fetching notes... Please wait." data-url= "#{url(:evernotes, :index)}" id='btn-evernote-sync' class='btn btn-success btn-block' Evernote Sync
   = form_tag url(:sessions, :destroy), method: :delete, class: 'btn-block'
     = submit_tag 'Logout', class: 'btn btn-default btn-block'

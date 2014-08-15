@@ -1,6 +1,6 @@
 LightNotes::App.controllers :notes do
   get :index, :map => '/*', :priority => :low do
-    @notes = current_account.notes.desc(:updated_at)
+    @notes = current_account.notes.ne(title: nil).desc(:updated_at)
     render 'notes/index'
   end
 

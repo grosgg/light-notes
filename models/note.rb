@@ -16,4 +16,5 @@ class Note
   		{ text: 'updated', type: 'label-warning' }
   	end
   end
+
 end

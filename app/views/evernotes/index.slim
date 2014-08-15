@@ -1,7 +1,7 @@
 h1 Evernote Sync
 
 - if @notebooks
-  = form_tag url(:evernotes, :synchronize), :method => :post, :class => 'form-horizontal btn-block' do
+  = form_tag url(:evernotes, :set_sync), :method => :post, :class => 'form-horizontal btn-block' do
     ul.list-group
       - @notebooks.each do |nb|
         li.list-group-item.list-group-item-info
@@ -13,6 +13,6 @@ h1 Evernote Sync
     = submit_tag('Synchronize selected notes', :class => 'btn btn-success btn-block')
 - else
   .alert.alert-danger
-    | Your Evernote account doesn't contain in notes.
+    | Your Evernote account doesn't contain any notes.
 
 = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'

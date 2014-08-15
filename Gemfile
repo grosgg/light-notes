@@ -20,8 +20,8 @@ gem 'slim'
 gem 'mongoid', '~>3.0.0'
 
 # Test requirements
-gem 'rspec', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+# gem 'rspec', :group => 'test'
+# gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
 gem 'padrino', '0.12.2'
@@ -35,6 +35,9 @@ gem 'evernote_oauth', '~> 0.2.3'
 
 # PDF Export
 gem 'pdfkit', '~> 0.6.2'
+
+# CRON tasks
+gem 'whenever', '~> 0.9.2'
 
 group :development do
   # Deployment
