@@ -1,10 +1,12 @@
-h1 Evernote Sync
+.panel.panel-default
+  .panel-body
+    h1 Synchronization
 
 - if @notebooks
   = form_tag url(:evernotes, :set_sync), :method => :post, :class => 'form-horizontal btn-block' do
     ul.list-group
       - @notebooks.each do |nb|
-        li.list-group-item.list-group-item-info
+        li.list-group-item.disabled
           strong = nb[:name]
         - nb[:notes].each do |n|
           li.list-group-item

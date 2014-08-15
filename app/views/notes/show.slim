@@ -1,10 +1,9 @@
-h1 = @note.title
-hr
-
-p = @body.html_safe
+.panel.panel-default
+  .panel-body
+    h1 = @note.title
+    p = @body.html_safe
 
 - unless @format == 'pdf'
-  hr
   div
     = link_to url(:notes, :show, :id => @note.id, :format => :pdf), class: 'btn btn-info btn-block' do
       <span class="glyphicon glyphicon-download"></span> Download as PDF

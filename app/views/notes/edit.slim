@@ -1,4 +1,6 @@
-h1 Edit note
-hr
+.panel.panel-default
+  .panel-body
+    h1 Edit Note
+
 = form_for :note, url(:notes, :update, :id => @note.id), :method => :put, :class => 'form-horizontal' do |f|
   = partial 'notes/form', :locals => { :f => f }

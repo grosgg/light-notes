@@ -16,7 +16,10 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
     div class='controls'
       = f.check_box :keep_synchronized
 
-hr
+br
 div class="form-actions"
   = f.submit pat(:save), :class => 'btn btn-primary btn-block'
-  = link_to pat(:cancel), url(:notes, :index), :class => 'btn btn-default btn-block'
+  - if @note.new_record?
+    = link_to pat(:cancel), url(:notes, :index), :class => 'btn btn-default btn-block'
+  - else
+    = link_to pat(:cancel), url(:notes, :show, :id => @note.id), :class => 'btn btn-default btn-block'
