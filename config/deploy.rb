@@ -40,7 +40,8 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby padrino}
 set :rbenv_roles, :all # default value
 
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :whenever_roles,                 ->{ :app }
+set :whenever_environment,           ->{ "production" }
 
 namespace :deploy do
 
