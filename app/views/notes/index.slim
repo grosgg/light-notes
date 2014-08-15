@@ -2,14 +2,14 @@
   .alert.alert-info Some notes are waiting to be imported from Evernote. Please refresh this page in a few minutes.
 
 .list-group
-	- for note in @notes do
-		= link_to url(:notes, :show, :id => note._id.to_s), class: 'list-group-item' do
-			span
-				= "#{note.title} "
-				- if note.label
-					span.label class=(note.label[:type])
-						= "#{note.label[:text]}"
-			span.pull-right = "#{time_ago_in_words note.updated_at} ago"
+  - for note in @notes do
+    = link_to url(:notes, :show, :id => note._id.to_s), class: 'list-group-item' do
+      span.visible-xs-inline = "#{note.title[0...30] + (note.title.length > 30 ? '...' : '')} "
+      span.hidden-xs = "#{note.title} "
+      - if note.label
+        span.label class=(note.label[:type])
+          = "#{note.label[:text]}"
+      span.pull-right.hidden-xs = "#{time_ago_in_words note.updated_at} ago"
 
 div
   = link_to 'New note', url(:notes, :new), class: 'btn btn-primary btn-block'
