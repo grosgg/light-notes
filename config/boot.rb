@@ -39,16 +39,13 @@ Padrino::Logger::Config[:deployment] = { :log_level => :info, :stream => :to_fil
 Padrino.before_load do
   Padrino.dependency_paths << Padrino.root('config/evernote.rb')
 	Padrino.dependency_paths << Padrino.root('config/secret.rb')
-	# if OAUTH_CONSUMER_KEY.empty? || OAUTH_CONSUMER_SECRET.empty?
- #    halt '<span style="color:red">Evernote settings are missing!</span>'
- #  end
 end
 
 ##
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
-  Padrino.use Rack::SSL if Padrino.env == :deployment
+  Padrino.use Rack::SSL unless Padrino.env == :development
 end
 
 Padrino.load!
