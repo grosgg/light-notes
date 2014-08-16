@@ -16,6 +16,7 @@ module LightNotes
     access_control.roles_for :any do |role|
       role.protect "/"
       role.allow   '/sessions'
+      role.allow   '/shares'
     end
 
     access_control.roles_for :user do |role|

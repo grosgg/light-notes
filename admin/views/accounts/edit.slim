@@ -1,4 +1,4 @@
-ul class="nav nav-tabs"
+ul class="nav nav-pills"
   li = link_to tag_icon(:list, pat(:list)), url(:accounts, :index)
   li = link_to tag_icon(:plus, pat(:new)), url(:accounts, :new)
   li class="active" = link_to tag_icon(:edit, pat(:edit)), url(:accounts, :edit, :id => @account.id)

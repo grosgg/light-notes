@@ -47,7 +47,7 @@ LightNotes::App.controllers :evernotes do
       render :set_sync
     else
       flash.now[:error] = pat('Please select at least one note to synchronize')
-      render :index
+      redirect url(:evernotes, :index)
     end
   end
 

@@ -3,9 +3,22 @@
     h1 = @note.title
     p = @body.html_safe
 
-- unless @format == 'pdf'
+- unless @format == 'pdf' || route.controller == 'shares'
+  - if @note.share_id
+    div.share-link
+      h4 Share link
+      input.form-control type="text" value="#{absolute_url(:shares, :show, :id => @note.share_id)}"
   div
-    = link_to url(:notes, :show, :id => @note.id, :format => :pdf), class: 'btn btn-info btn-block' do
-      <span class="glyphicon glyphicon-download"></span> Download as PDF
-    = link_to 'Edit', url(:notes, :edit, :id => @note.id), class: 'btn btn-warning btn-block'
+    .row.buttons-row
+      .col-sm-6.column
+        = link_to url(:notes, :show, :id => @note.id, :format => :pdf), class: 'btn btn-default btn-block' do
+          span.glyphicon.glyphicon-download
+          |  Download as PDF
+      .col-sm-6.column
+        = link_to url(:notes, :toggle_share, :id => @note.id), class: 'btn btn-default btn-block' do
+          span.glyphicon.glyphicon-share
+          = @note.share_id ? ' Unshare' : ' Share'
+    = link_to url(:notes, :edit, :id => @note.id), class: 'btn btn-default btn-block' do
+      span.glyphicon.glyphicon-edit
+      |  Edit
     = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'

@@ -6,13 +6,20 @@
     = link_to url(:notes, :show, :id => note._id.to_s), class: 'list-group-item' do
       span.visible-xs-inline = "#{note.title[0...30] + (note.title.length > 30 ? '...' : '')} "
       span.hidden-xs = "#{note.title} "
-      - if note.label
-        span.label class=(note.label[:type])
-          = "#{note.label[:text]}"
+      - if note.date_label
+        span.label.hidden-xs class=(note.date_label[:type])
+          = "#{note.date_label[:text]}"
+      - if note.share_label
+        span.label class=(note.share_label[:type])
+          = "#{note.share_label[:text]}"
       span.pull-right.hidden-xs = "#{time_ago_in_words note.updated_at} ago"
 
 div
-  = link_to 'New note', url(:notes, :new), class: 'btn btn-primary btn-block'
-  button data-loading-text= "Fetching notes... Please wait." data-url= "#{url(:evernotes, :index)}" id='btn-evernote-sync' class='btn btn-success btn-block' Evernote Sync
+  = link_to url(:notes, :new), class: 'btn btn-default btn-block' do
+    span.glyphicon.glyphicon-pencil
+    |  New note
+  button data-loading-text= "Fetching notes... Please wait." data-url= "#{url(:evernotes, :index)}" id='btn-evernote-sync' class='btn btn-default btn-block'
+    span.glyphicon.glyphicon-cloud
+    |  Import from Evernote
   = form_tag url(:sessions, :destroy), method: :delete, class: 'btn-block'
     = submit_tag 'Logout', class: 'btn btn-default btn-block'

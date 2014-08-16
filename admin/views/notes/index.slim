@@ -1,9 +1,9 @@
-ul class="nav nav-tabs"
+ul class="nav nav-pills"
   li class="active" = link_to tag_icon(:list, pat(:list)), url(:notes, :index)
   li = link_to tag_icon(:plus, pat(:new)), url(:notes, :new)
 
 div class="tabs-content"
-  table class="table table-striped table-hover table-condensed" id="list"
+  table class="table table-hover table-condensed" id="list"
     thead
       tr
         th class='header list-menu'
@@ -26,10 +26,11 @@ div class="tabs-content"
                       = submit_tag  pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       div class='btn btn-default btn-small cancel' = pat(:cancel)
         th class='header' = mat(:note, :title)
-        th class='header' = mat(:note, :evernote)
+        th class='header' = mat(:note, :from_evernote)
+        th class='header' = mat(:note, :synchronized)
+        th class='header' = mat(:note, :shared)
+        th class='header' = mat(:note, :updated)
         th class='header' = mat(:note, :owner)
-        th class='header' = mat(:note, :created_at)
-        th class='header' = mat(:note, :updated_at)
         th class='header list-row-action-header'
 
     tbody
@@ -42,9 +43,18 @@ div class="tabs-content"
               i.icon-ok
             - else
               i.icon-remove
-          td class='list-column' = note.account.name
-          td class='list-column' = time_ago_in_words note.created_at
+          td class='list-column'
+            - if note.keep_synchronized
+              i.icon-ok
+            - else
+              i.icon-remove
+          td class='list-column'
+            - if note.share_id
+              i.icon-ok
+            - else
+              i.icon-remove
           td class='list-column' = time_ago_in_words note.updated_at
+          td class='list-column' = note.account.name
           td class='list-column list-row-action'
             div class='list-row-action-wrapper'
               = link_to tag_icon(:edit), :href => url(:notes, :edit, :id => note.id), :rel => :tooltip, :title => "#{pat(:edit)} note", :class => 'list-row-action-wrapper-link'

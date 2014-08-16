@@ -13,3 +13,14 @@ body {
   font-size: 30px;
 }
 
+.share-link {
+  margin-bottom: 20px;
+}
+
+.buttons-row a {
+  margin-bottom: 5px;
+}
+
+.label + .label {
+  margin-left: 5px;
+}

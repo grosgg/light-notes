@@ -17,6 +17,7 @@ body {
 }
 .main-wrapper-push {
   height: 70px; /* same as the footer */
+  margin-top: 20px;
 }
 footer {
   margin-top: -70px;
@@ -162,7 +163,11 @@ footer p {
 
 /* -- Begin Application -- */
 .tabs-content {
-  padding: 30px 0;
+  padding: 30px 0 0 0;
+}
+#list {
+  border: 1px solid #dddddd;
+  background-color: white;
 }
 .form-actions {
   text-align: right;

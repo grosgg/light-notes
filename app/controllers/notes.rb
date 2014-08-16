@@ -5,7 +5,6 @@ LightNotes::App.controllers :notes do
   end
 
   get :show, :with => :id, :provides => [:html, :pdf] do
-    puts url(:notes, :new)
     unless @note = current_account.notes.where(_id: params[:id]).first
     	redirect url(:notes, :index)
     end
@@ -65,6 +64,22 @@ LightNotes::App.controllers :notes do
       end
     else
       flash[:warning] = pat(:update_warning, :model => 'note', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
+  get :toggle_share, :with => :id do
+    @note = Note.find(params[:id])
+    if @note
+      if @note.share_id.blank?
+        @note.update_attributes(share_id: SecureRandom.hex(5))
+      else
+        @note.update_attributes(share_id: nil)
+      end
+      flash[:success] = pat(:update_success, :model => 'Note', :id =>  "#{params[:id]}")
+      redirect(url(:notes, :show, :id => @note.id))
+    else
+      flash[:warning] = pat(:create_error, :model => 'note', :id => "#{params[:id]}")
       halt 404
     end
   end

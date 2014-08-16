@@ -12,7 +12,7 @@
           li.list-group-item
             = n.title
             = check_box_tag("evernotes[#{n.guid}]", :class => 'pull-right')
-    = submit_tag('Synchronize selected notes', :class => 'btn btn-success btn-block')
+    = submit_tag('Import selected notes', :class => 'btn btn-default btn-block')
 - else
   .alert.alert-danger
     | Your Evernote account doesn't contain any notes.
