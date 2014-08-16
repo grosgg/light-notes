@@ -1,4 +1,6 @@
 LightNotes::App.controllers :sessions do
+  use Rack::SslEnforcer unless Padrino.env == :development
+
   get :new do
     render "/sessions/new", nil
   end
