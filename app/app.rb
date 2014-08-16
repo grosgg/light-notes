@@ -5,8 +5,14 @@ module LightNotes
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
 
-    use Rack::SSL unless Padrino.env == :development
-    enable :sessions
+    if Padrino.env == :development
+      enable :sessions
+    else
+      use Rack::Session::Cookie, :key => '_rack_session',
+                                 :path => '/',
+                                 :expire_after => 2592000, # In seconds
+                                 :secret => settings.session_secret
+    end
 
     enable :authentication
     enable :store_location
