@@ -5,15 +5,7 @@ module LightNotes
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
 
-    if Padrino.env == :development
-      enable :sessions
-    else
-      use Rack::Session::Cookie, :key => '_rack_session',
-                                 :path => '/',
-                                 :expire_after => 2592000, # In seconds
-                                 :secret => settings.session_secret
-    end
-
+    enable :sessions
     enable :authentication
     enable :store_location
 

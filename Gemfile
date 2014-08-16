@@ -49,7 +49,6 @@ group :development do
 end
 
 group :deployment do
-  gem 'rack-ssl-enforcer', '~> 0.2.8'
   gem "unicorn"
 end
 
