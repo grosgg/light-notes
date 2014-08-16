@@ -48,6 +48,7 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  Padrino.use Rack::SSL if Padrino.env == :deployment
 end
 
 Padrino.load!

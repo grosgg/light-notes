@@ -50,4 +50,5 @@ end
 
 group :deployment do
   gem "unicorn"
+  gem 'rack-ssl', '~> 1.4.1'
 end
