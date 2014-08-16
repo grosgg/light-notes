@@ -5,4 +5,6 @@ $( document ).ready(function() {
     btn.button('loading');
     window.location.href = btn.attr('data-url');
   });
+
+  $('#note-content table').addClass('table');
 });

@@ -1,7 +1,7 @@
 .panel.panel-default
-  .panel-body
+  .panel-body#note-content
     h1 = @note.title
-    p = @body.html_safe
+    = @body.html_safe
 
 - unless @format == 'pdf' || route.controller == 'shares'
   - if @note.share_id
