@@ -5,6 +5,7 @@ module LightNotes
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
 
+    use Rack::SSL unless Padrino.env == :development
     enable :sessions
 
     enable :authentication
