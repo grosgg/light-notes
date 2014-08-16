@@ -21,5 +21,3 @@ div
   button data-loading-text= "Fetching notes... Please wait." data-url= "#{url(:evernotes, :index)}" id='btn-evernote-sync' class='btn btn-default btn-block'
     span.glyphicon.glyphicon-cloud
     |  Import from Evernote
-  = form_tag url(:sessions, :destroy), method: :delete, class: 'btn-block'
-    = submit_tag 'Logout', class: 'btn btn-default btn-block'

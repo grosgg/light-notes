@@ -21,9 +21,11 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
                 h1
                   | Light Notes
                   - if current_account
-                    p.logged-as
+                    div.logged-as
                       span.glyphicon.glyphicon-user
                       = " #{current_account.name}"
+                      = form_tag url(:sessions, :destroy), method: :delete, id: 'form-logout'
+                        = submit_tag 'Logout', class: 'btn btn-default btn-xs btn-block'
       .row.clearfix
         .col-md-12.column
           =  {:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name}") }.join.html_safe

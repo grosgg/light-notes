@@ -6,6 +6,11 @@ body {
 .logged-as {
   float: right;
   font-size: 12px;
+  margin-top: -2px
+}
+
+#form-logout {
+  margin-top: 2px;
 }
 
 .panel-body > h1 {
