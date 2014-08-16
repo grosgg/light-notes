@@ -51,7 +51,8 @@ class Account
     client = EvernoteOAuth::Client.new(token: evernote_token, consumer_key:OAUTH_CONSUMER_KEY, consumer_secret:OAUTH_CONSUMER_SECRET, sandbox: SANDBOX)
     state = client.note_store.getSyncState()
     sync_count = 0
-    if state.updateCount > last_sync
+    notes_to_import = notes.nin(evernote_id: [nil, '']).in(title: [nil, ''])
+    if state.updateCount > last_sync || notes_to_import.count > 0
       notes.nin(evernote_id: [nil, '']).where(keep_synchronized: true).each do |note|
         evernote = client.note_store.getNote(note.evernote_id, true, false, false, false)
         note.title = evernote.title
