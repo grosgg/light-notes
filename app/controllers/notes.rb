@@ -1,6 +1,6 @@
 LightNotes::App.controllers :notes do
   get :index, :map => '/*', :priority => :low do
-    @notes = Note.in(id: Note.active(current_account) + Note.just_deleted(current_account))
+    @notes = Note.in(id: Note.active(current_account) + Note.just_deleted(current_account)).desc(:updated_at)
     render 'notes/index'
   end
 

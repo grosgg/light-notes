@@ -1,7 +1,7 @@
 LightNotes::Admin.controllers :notes do
   get :index, :map => '/*', :priority => :low do
     @title = "Notes"
-    @notes = Note.desc(:update_at)
+    @notes = Note.desc(:updated_at)
     render 'notes/index'
   end
 
