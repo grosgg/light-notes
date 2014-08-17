@@ -22,3 +22,6 @@
       span.glyphicon.glyphicon-edit
       |  Edit
     = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'
+
+- if route.controller == 'shares'
+  = partial 'notes/comments', locals: {note: @note}

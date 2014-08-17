@@ -7,4 +7,8 @@ $( document ).ready(function() {
   });
 
   $('#note-content table').addClass('table');
+
+  $('.share-link input').click(function () {
+    $(this).select();
+  });
 });
