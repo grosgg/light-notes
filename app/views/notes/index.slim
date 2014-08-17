@@ -9,6 +9,9 @@
       - if note.date_label
         span.label.hidden-xs class=(note.date_label[:type])
           = "#{note.date_label[:text]}"
+      - if note.sync_label
+        span.label.hidden-xs class=(note.sync_label[:type])
+          = "#{note.sync_label[:text]}"
       - if note.share_label
         span.label class=(note.share_label[:type])
           = "#{note.share_label[:text]}"

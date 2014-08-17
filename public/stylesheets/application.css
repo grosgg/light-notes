@@ -18,6 +18,10 @@ body {
   font-size: 30px;
 }
 
+#note-content > h1 {
+  margin-bottom: 10px;
+}
+
 .share-link {
   margin-bottom: 20px;
 }
