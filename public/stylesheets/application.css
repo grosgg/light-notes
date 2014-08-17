@@ -33,3 +33,7 @@ body {
 .label + .label {
   margin-left: 5px;
 }
+
+.footer {
+  height: 40px;
+}
