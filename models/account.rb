@@ -10,6 +10,7 @@ class Account
   field :role,             :type => String
   field :evernote_token,   :type => String
   field :last_sync,        :type => Integer, :default => 0
+  field :last_login,       :type => Time
 
   # Relations
   has_many :notes

@@ -5,6 +5,7 @@ LightNotes::App.controllers :sessions do
 
   post :create do
     if account = Account.authenticate(params[:email], params[:password])
+      account.update_attributes(last_login: Time.now)
       set_current_account(account)
       redirect url(:notes, :index)
     else

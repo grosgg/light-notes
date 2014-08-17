@@ -6,6 +6,7 @@ LightNotes::Admin.controllers :sessions do
   post :create do
     account = Account.authenticate(params[:email], params[:password])
     if account && account.role == 'admin'
+      account.update_attributes(last_login: Time.now)
       set_current_account(account)
       redirect url(:notes, :index)
     elsif Padrino.env == :development && params[:bypass]
