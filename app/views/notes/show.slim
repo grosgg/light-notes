@@ -18,9 +18,15 @@
         = link_to url(:notes, :toggle_share, :id => @note.id), class: 'btn btn-default btn-block' do
           span.glyphicon.glyphicon-share
           = @note.share_id ? ' Unshare' : ' Share'
-    = link_to url(:notes, :edit, :id => @note.id), class: 'btn btn-default btn-block' do
-      span.glyphicon.glyphicon-edit
-      |  Edit
+    .row.buttons-row
+      .col-sm-6.column
+        = link_to url(:notes, :edit, :id => @note.id), class: 'btn btn-default btn-block' do
+          span.glyphicon.glyphicon-edit
+          |  Edit
+      .col-sm-6.column
+        = link_to url(:notes, :toggle_destroy, :id => @note.id), class: 'btn btn-default btn-block' do
+          span.glyphicon.glyphicon-trash
+          = @note.soft_deleted ? ' Recover' : ' Delete'
     = link_to 'Back', url(:notes, :index), class: 'btn btn-default btn-block'
 
 - if route.controller == 'shares'

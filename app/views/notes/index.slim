@@ -3,9 +3,10 @@
 
 .list-group
   - for note in @notes do
-    = link_to url(:notes, :show, :id => note._id.to_s), class: 'list-group-item' do
+    = link_to url(:notes, :show, :id => note.id), class: 'list-group-item' do
       span.visible-xs-inline = "#{note.title[0...30] + (note.title.length > 30 ? '...' : '')} "
       span.hidden-xs = "#{note.title} "
+
       - if note.date_label
         span.label.hidden-xs class=(note.date_label[:type])
           = "#{note.date_label[:text]}"
@@ -15,7 +16,12 @@
       - if note.share_label
         span.label class=(note.share_label[:type])
           = "#{note.share_label[:text]}"
-      span.pull-right.hidden-xs = "#{time_ago_in_words note.updated_at} ago"
+
+      span.pull-right.hidden-xs
+        - if note.soft_deleted
+          | Deleted
+        - else
+          = "#{time_ago_in_words note.updated_at} ago"
 
 div
   = link_to url(:notes, :new), class: 'btn btn-default btn-block' do

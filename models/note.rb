@@ -7,6 +7,7 @@ class Note
   field :evernote_id,          :type => String
   field :keep_synchronized,    :type => Boolean, :default => false
   field :share_id,             :type => String
+  field :soft_deleted,         :type => Boolean, :default => false
 
   belongs_to :account
 
@@ -28,5 +29,13 @@ class Note
     if self.keep_synchronized
       { text: 'synced', type: 'label-success' }
     end
+  end
+
+  def self.active(current_account)
+    current_account.notes.ne(title: nil).where(soft_deleted: false).map(&:id)
+  end
+
+  def self.just_deleted(current_account)
+    current_account.notes.where(soft_deleted: true).gt(updated_at: 2.minutes.ago).map(&:id)
   end
 end

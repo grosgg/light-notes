@@ -1,6 +1,6 @@
 LightNotes::App.controllers :notes do
   get :index, :map => '/*', :priority => :low do
-    @notes = current_account.notes.ne(title: nil).desc(:updated_at)
+    @notes = Note.in(id: Note.active(current_account) + Note.just_deleted(current_account))
     render 'notes/index'
   end
 
@@ -43,7 +43,7 @@ LightNotes::App.controllers :notes do
   end
 
   get :edit, :with => :id do
-    @note = Note.find(params[:id])
+    @note = Note.where(id: params[:id], account: current_account).first
     if @note
       render 'notes/edit'
     else
@@ -53,7 +53,7 @@ LightNotes::App.controllers :notes do
   end
 
   put :update, :with => :id do
-    @note = Note.find(params[:id])
+    @note = Note.where(id: params[:id], account: current_account).first
     if @note
       if @note.update_attributes(params[:note])
         flash[:success] = pat(:update_success, :model => 'Note', :id =>  "#{params[:id]}")
@@ -69,7 +69,7 @@ LightNotes::App.controllers :notes do
   end
 
   get :toggle_share, :with => :id do
-    @note = Note.find(params[:id])
+    @note = Note.where(id: params[:id], account: current_account).first
     if @note
       if @note.share_id.blank?
         @note.update_attributes(share_id: SecureRandom.hex(5))
@@ -79,7 +79,19 @@ LightNotes::App.controllers :notes do
       flash[:success] = pat(:update_success, :model => 'Note', :id =>  "#{params[:id]}")
       redirect(url(:notes, :show, :id => @note.id))
     else
-      flash[:warning] = pat(:create_error, :model => 'note', :id => "#{params[:id]}")
+      flash[:warning] = pat(:update_warning, :model => 'note', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
+  get :toggle_destroy, :with => :id do
+    note = Note.where(id: params[:id], account: current_account).first
+    if note
+      note.update_attributes(soft_deleted: !note.soft_deleted)
+      flash[:success] = pat(note.soft_deleted ? :delete_success : :update_success, :model => 'Note', :id =>  "#{params[:id]}")
+      redirect(url(:notes, :show, :id => note.id))
+    else
+      flash[:warning] = pat(:delete_warning, :model => 'note', :id => "#{params[:id]}")
       halt 404
     end
   end

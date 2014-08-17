@@ -29,6 +29,7 @@ div class="tabs-content"
         th class='header' = mat(:note, :from_evernote)
         th class='header' = mat(:note, :synchronized)
         th class='header' = mat(:note, :shared)
+        th class='header' = mat(:note, :soft_deleted)
         th class='header' = mat(:note, :updated)
         th class='header' = mat(:note, :owner)
         th class='header list-row-action-header'
@@ -41,18 +42,15 @@ div class="tabs-content"
           td class='list-column'
             - if note.evernote_id.present?
               i.icon-ok
-            - else
-              i.icon-remove
           td class='list-column'
             - if note.keep_synchronized
               i.icon-ok
-            - else
-              i.icon-remove
           td class='list-column'
             - if note.share_id
               i.icon-ok
-            - else
-              i.icon-remove
+          td class='list-column'
+            - if note.soft_deleted
+              i.icon-trash
           td class='list-column' = time_ago_in_words note.updated_at
           td class='list-column' = note.account.name
           td class='list-column list-row-action'
