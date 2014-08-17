@@ -25,3 +25,5 @@
 
 - if route.controller == 'shares'
   = partial 'notes/comments', locals: {note: @note}
+  - if Padrino.env == :deployment
+    = partial 'notes/tracking', locals: {note: @note}
