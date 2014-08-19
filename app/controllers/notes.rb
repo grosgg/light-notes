@@ -18,10 +18,13 @@ LightNotes::App.controllers :notes do
       kit = PDFKit.new(render('notes/show', layout: false), :page_size => 'Folio')
       kit.stylesheets << 'public/stylesheets/bootstrap.min.css'
       headers["Content-Disposition"] = "attachment;filename=#{@note.title} #{Time.now.to_s}.pdf"
-      headers["Content-Type"] = "application/octet-stream"
-      pdf = kit.to_file('tmp/export.pdf')
-      send_file pdf
-      File.delete('tmp/export.pdf')
+      headers['Content-Description'] = 'File Transfer'
+      headers['Content-Transfer-Encoding'] = 'binary'
+      headers['Content-Type'] = 'application/octet-stream'
+      headers['Expires'] = '0'
+      headers['Pragma'] = 'public'
+      headers['Cache-Control'] = 'private, max-age=0, must-revalidate'
+      kit.to_pdf
     else
       render 'notes/show'
     end
