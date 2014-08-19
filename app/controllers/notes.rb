@@ -20,13 +20,11 @@ LightNotes::App.controllers :notes do
       headers["Content-Disposition"] = "attachment;filename=#{@note.title} #{Time.now.to_s}.pdf"
       headers['Content-Description'] = 'File Transfer'
       headers['Content-Transfer-Encoding'] = 'binary'
-      headers['Content-Type'] = 'application/octet-stream'
+      headers['Content-Type'] = 'application/pdf'
       headers['Expires'] = '0'
       headers['Pragma'] = 'public'
       headers['Cache-Control'] = 'private, max-age=0, must-revalidate'
-
-      file = kit.to_file('tmp/export.pdf')
-      IO.read('tmp/export.pdf')
+      kit.to_pdf
     else
       render 'notes/show'
     end
