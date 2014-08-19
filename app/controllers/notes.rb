@@ -18,6 +18,7 @@ LightNotes::App.controllers :notes do
       kit = PDFKit.new(render('notes/show', layout: false), :page_size => 'Folio')
       kit.stylesheets << 'public/stylesheets/bootstrap.min.css'
       headers["Content-Disposition"] = "attachment;filename=#{@note.title} #{Time.now.to_s}.pdf"
+      headers["Content-Type"] =  "application/pdf"
       kit.to_pdf
     else
       render 'notes/show'
