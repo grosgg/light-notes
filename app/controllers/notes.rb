@@ -24,7 +24,9 @@ LightNotes::App.controllers :notes do
       headers['Expires'] = '0'
       headers['Pragma'] = 'public'
       headers['Cache-Control'] = 'private, max-age=0, must-revalidate'
-      kit.to_pdf
+
+      file = kit.to_file('tmp/export.pdf')
+      IO.read('tmp/export.pdf')
     else
       render 'notes/show'
     end
