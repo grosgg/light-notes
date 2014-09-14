@@ -41,7 +41,7 @@ LightNotes::App.controllers :notes do
     @note.account = current_account
     if @note.save
       flash[:success] = pat(:create_success, :model => 'Note')
-      redirect url(:notes, :index)
+      redirect url(:notes, :show, :id => @note.id)
     else
       flash.now[:error] = pat(:create_error, :model => 'note')
       render 'notes/new'
@@ -63,7 +63,7 @@ LightNotes::App.controllers :notes do
     if @note
       if @note.update_attributes(params[:note])
         flash[:success] = pat(:update_success, :model => 'Note', :id =>  "#{params[:id]}")
-        redirect(url(:notes, :index))
+        redirect(url(:notes, :show, :id => @note.id))
       else
         flash.now[:error] = pat(:update_error, :model => 'note')
         render 'notes/edit'
@@ -95,7 +95,7 @@ LightNotes::App.controllers :notes do
     if note
       note.update_attributes(soft_deleted: !note.soft_deleted)
       flash[:success] = pat(note.soft_deleted ? :delete_success : :update_success, :model => 'Note', :id =>  "#{params[:id]}")
-      redirect(url(:notes, :show, :id => note.id))
+      redirect(url(:notes, :index))
     else
       flash[:warning] = pat(:delete_warning, :model => 'note', :id => "#{params[:id]}")
       halt 404
