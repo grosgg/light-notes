@@ -41,13 +41,13 @@ div class="tabs-content"
           td class='list-column' = note.title
           td class='list-column'
             - if note.evernote_id.present?
-              i.icon-ok
+              i.icon-cloud
           td class='list-column'
             - if note.keep_synchronized
-              i.icon-ok
+              i.icon-cloud-download
           td class='list-column'
             - if note.share_id
-              i.icon-ok
+              i.icon-share-sign
           td class='list-column'
             - if note.soft_deleted
               i.icon-trash

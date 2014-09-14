@@ -8,14 +8,17 @@
       span.hidden-xs = "#{note.title} "
 
       - if note.date_label
-        span.label.hidden-xs class=(note.date_label[:type])
-          = "#{note.date_label[:text]}"
-      - if note.sync_label
-        span.label.hidden-xs class=(note.sync_label[:type])
-          = "#{note.sync_label[:text]}"
-      - if note.share_label
-        span.label class=(note.share_label[:type])
-          = "#{note.share_label[:text]}"
+        span.label class=(note.date_label[:type])
+          span.glyphicon class=("glyphicon-#{note.date_label[:text]}")
+      - if note.keep_synchronized
+        span.label.label-success.hidden-xs
+          span.glyphicon.glyphicon-cloud
+      - if note.share_id
+        span.label.label-warning
+          span.glyphicon.glyphicon-share-alt
+      - if note.soft_deleted
+        span.label.label-danger
+          span.glyphicon.glyphicon-trash
 
       span.pull-right.hidden-xs
         - if note.soft_deleted

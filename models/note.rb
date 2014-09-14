@@ -13,21 +13,9 @@ class Note
 
   def date_label
     if self.created_at - 2.days.ago > 0
-      { text: 'new', type: 'label-primary' }
+      { text: 'pencil', type: 'label-primary' }
     elsif self.updated_at - 2.days.ago > 0
-      { text: 'updated', type: 'label-default' }
-    end
-  end
-
-  def share_label
-  	if self.share_id
-  		{ text: 'shared', type: 'label-warning' }
-    end
-  end
-
-  def sync_label
-    if self.keep_synchronized
-      { text: 'synced', type: 'label-success' }
+      { text: 'pencil', type: 'label-default' }
     end
   end
 
