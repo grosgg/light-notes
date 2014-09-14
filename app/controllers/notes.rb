@@ -15,7 +15,7 @@ LightNotes::App.controllers :notes do
 
     case content_type
     when :pdf
-      kit = PDFKit.new(render('notes/show', layout: false), :page_size => 'Folio')
+      kit = PDFKit.new(render('notes/show', layout: false), :page_size => 'A4')
       kit.stylesheets << 'public/stylesheets/bootstrap.min.css'
       headers["Content-Disposition"] = "attachment;filename=#{@note.title} #{Time.now.to_s}.pdf"
       headers['Content-Description'] = 'File Transfer'
