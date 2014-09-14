@@ -6,8 +6,6 @@ $( document ).ready(function() {
     window.location.href = btn.attr('data-url');
   });
 
-  $('#note-content table').addClass('table');
-
   $('.share-link input').click(function () {
     $(this).select();
   });

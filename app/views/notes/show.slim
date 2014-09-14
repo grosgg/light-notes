@@ -1,7 +1,11 @@
-.panel.panel-default
-  .panel-body#note-content
-    h1 = @note.title
-    = @body.html_safe
+- if @format == 'pdf'
+  h1 = @note.title
+  = @body.html_safe
+- else
+  .panel.panel-default
+    .panel-body#note-content
+      h1 = @note.title
+      = @body.html_safe
 
 - unless @format == 'pdf' || route.controller == 'shares'
   - if @note.share_id
