@@ -1,6 +1,12 @@
 - if Note.nin(evernote_id: [nil, '']).in(title: [nil, '']).count > 0
   .alert.alert-info Some notes are waiting to be imported from Evernote. Please refresh this page in a few minutes.
 
+= form_tag :index, method: 'get', id: 'search-form' do
+  .input-group
+    = text_field_tag :search, :value => params[:search], class: 'form-control'
+    span.input-group-btn
+      = submit_tag "Search", class: 'btn btn-default'
+
 .list-group
   - for note in @notes do
     = link_to url(:notes, :show, :id => note.id), class: 'list-group-item' do
@@ -16,6 +22,9 @@
       - if note.share_id
         span.label.label-warning
           span.glyphicon.glyphicon-share-alt
+      - if note.archived
+        span.label.label-default
+          span.glyphicon.glyphicon-inbox
       - if note.soft_deleted
         span.label.label-danger
           span.glyphicon.glyphicon-trash

@@ -18,6 +18,7 @@ gem 'bcrypt'
 gem 'sass'
 gem 'slim'
 gem 'mongoid', '~>3.0.0'
+gem 'mongoid_search', '~> 0.3.2'
 
 # Test requirements
 # gem 'rspec', :group => 'test'

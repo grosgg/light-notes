@@ -69,6 +69,18 @@ class Account
     sync_count
   end
 
+  def active_notes
+    self.notes.ne(title: nil).where(soft_deleted: false, archived: false).map(&:id)
+  end
+
+  def archived_notes
+    self.notes.where(soft_deleted: false, archived: true).map(&:id)
+  end
+
+  def just_deleted_notes
+    self.notes.where(soft_deleted: true).gt(updated_at: 2.minutes.ago).map(&:id)
+  end
+
   private
 
   def encrypt_password

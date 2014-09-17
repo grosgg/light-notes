@@ -3,6 +3,11 @@ body {
   padding-top: 20px;
 }
 
+#site-title {
+  color: #555;
+  text-decoration: none;
+}
+
 .logged-as {
   float: right;
   font-size: 12px;
@@ -11,6 +16,10 @@ body {
 
 #form-logout {
   margin-top: 2px;
+}
+
+#search-form {
+  margin-bottom: 20px;
 }
 
 .panel-body > h1 {

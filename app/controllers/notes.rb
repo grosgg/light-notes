@@ -1,6 +1,10 @@
 LightNotes::App.controllers :notes do
   get :index, :map => '/*', :priority => :low do
-    @notes = Note.in(id: Note.active(current_account) + Note.just_deleted(current_account)).desc(:updated_at)
+    if params[:search] && !params[:search].empty?
+      @notes = Note.in(id: current_account.active_notes + current_account.archived_notes).full_text_search(params[:search])
+    else
+      @notes = Note.in(id: current_account.active_notes + current_account.just_deleted_notes).desc(:updated_at)
+    end
     render 'notes/index'
   end
 

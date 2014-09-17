@@ -14,13 +14,13 @@ html lang="en" xmlns="http://www.w3.org/1999/xhtml"
   body
     = partial 'layouts/ga' if Padrino.env == :deployment
     .container
-      - if route.controller == 'sessions' || current_path == url(:notes, :index)
+      - if route.controller == 'sessions' || (route.controller == 'notes' && route.action == :index)
         .row.clearfix
           .col-md-12.column
             .panel.panel-default
               .panel-body
                 h1
-                  | Light Notes
+                  = link_to 'Light Notes', url(:notes, :index), id: 'site-title'
                   - if current_account
                     div.logged-as
                       span.glyphicon.glyphicon-user

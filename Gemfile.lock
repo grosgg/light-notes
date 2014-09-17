@@ -32,6 +32,7 @@ GEM
     evernote_oauth (0.2.3)
       evernote-thrift
       oauth (>= 0.4.1)
+    fast-stemmer (1.0.2)
     http_router (0.11.1)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
@@ -48,6 +49,9 @@ GEM
       moped (~> 1.2)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
+    mongoid_search (0.3.2)
+      fast-stemmer (~> 1.0.0)
+      mongoid (>= 3.0.0)
     moped (1.5.2)
     multi_json (1.10.1)
     net-scp (1.2.1)
@@ -142,6 +146,7 @@ DEPENDENCIES
   capistrano3-unicorn
   evernote_oauth (~> 0.2.3)
   mongoid (~> 3.0.0)
+  mongoid_search (~> 0.3.2)
   padrino (= 0.12.2)
   pdfkit (~> 0.6.2)
   rake

@@ -1,6 +1,7 @@
 class Note
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
 
   field :title,                :type => String
   field :body,                 :type => String
@@ -11,6 +12,7 @@ class Note
   field :archived,             :type => Boolean, :default => false
 
   belongs_to :account
+  search_in :title
 
   def date_label
     if self.created_at - 2.days.ago > 0
@@ -22,6 +24,10 @@ class Note
 
   def self.active(current_account)
     current_account.notes.ne(title: nil).where(soft_deleted: false, archived: false).map(&:id)
+  end
+
+  def self.archived(current_account)
+    current_account.notes.where(soft_deleted: false, archived: true).map(&:id)
   end
 
   def self.just_deleted(current_account)
