@@ -28,6 +28,15 @@
           span.glyphicon.glyphicon-edit
           |  Edit
       .col-sm-6.column
+        = link_to url(:notes, :edit, :id => @note.id), class: 'btn btn-default btn-block' do
+          span.glyphicon.glyphicon-plus-sign
+          |  Duplicate
+    .row.buttons-row
+      .col-sm-6.column
+        = link_to url(:notes, :toggle_archive, :id => @note.id), class: 'btn btn-default btn-block' do
+          span.glyphicon.glyphicon-inbox
+          |  Archive
+      .col-sm-6.column
         = link_to url(:notes, :toggle_destroy, :id => @note.id), class: 'btn btn-default btn-block' do
           span.glyphicon.glyphicon-trash
           = @note.soft_deleted ? ' Recover' : ' Delete'

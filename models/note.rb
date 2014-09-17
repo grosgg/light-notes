@@ -8,6 +8,7 @@ class Note
   field :keep_synchronized,    :type => Boolean, :default => false
   field :share_id,             :type => String
   field :soft_deleted,         :type => Boolean, :default => false
+  field :archived,             :type => Boolean, :default => false
 
   belongs_to :account
 
@@ -20,7 +21,7 @@ class Note
   end
 
   def self.active(current_account)
-    current_account.notes.ne(title: nil).where(soft_deleted: false).map(&:id)
+    current_account.notes.ne(title: nil).where(soft_deleted: false, archived: false).map(&:id)
   end
 
   def self.just_deleted(current_account)

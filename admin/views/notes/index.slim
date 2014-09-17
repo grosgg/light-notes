@@ -29,7 +29,8 @@ div class="tabs-content"
         th class='header' = mat(:note, :from_evernote)
         th class='header' = mat(:note, :synchronized)
         th class='header' = mat(:note, :shared)
-        th class='header' = mat(:note, :soft_deleted)
+        th class='header' = mat(:note, :archived)
+        th class='header' = mat(:note, :deleted)
         th class='header' = mat(:note, :updated)
         th class='header' = mat(:note, :owner)
         th class='header list-row-action-header'
@@ -48,6 +49,9 @@ div class="tabs-content"
           td class='list-column'
             - if note.share_id
               i.icon-share-sign
+          td class='list-column'
+            - if note.archived
+              i.icon-inbox
           td class='list-column'
             - if note.soft_deleted
               i.icon-trash

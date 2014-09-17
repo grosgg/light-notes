@@ -82,8 +82,20 @@ LightNotes::App.controllers :notes do
       else
         @note.update_attributes(share_id: nil)
       end
-      flash[:success] = pat(:update_success, :model => 'Note', :id =>  "#{params[:id]}")
+      flash[:success] = pat(:update_success, :model => 'Note', :id => "#{params[:id]}")
       redirect(url(:notes, :show, :id => @note.id))
+    else
+      flash[:warning] = pat(:update_warning, :model => 'note', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
+  get :toggle_archive, :with => :id do
+    note = Note.where(id: params[:id], account: current_account).first
+    if note
+      note.update_attributes(archived: !note.archived)
+      flash[:success] = pat(:update_success, :model => 'Note', :id => "#{params[:id]}")
+      redirect(url(:notes, :index))
     else
       flash[:warning] = pat(:update_warning, :model => 'note', :id => "#{params[:id]}")
       halt 404
