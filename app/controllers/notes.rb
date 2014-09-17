@@ -74,6 +74,25 @@ LightNotes::App.controllers :notes do
     end
   end
 
+  get :duplicate, :with => :id do
+    note = Note.where(id: params[:id], account: current_account).first
+    if note
+      @note = note.clone
+      @note.assign_attributes(share_id: nil, evernote_id: nil, keep_synchronized: false, created_at: Time.now, updated_at: Time.now)
+
+      if @note.save
+        flash[:success] = pat(:create_success, :model => 'Note')
+        redirect(url(:notes, :index))
+      else
+        flash.now[:error] = pat(:create_error, :model => 'note')
+        render 'notes/edit'
+      end
+    else
+      flash[:warning] = pat(:update_warning, :model => 'note', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
   get :toggle_share, :with => :id do
     @note = Note.where(id: params[:id], account: current_account).first
     if @note

@@ -4,6 +4,10 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
   div class='controls'
     = f.text_field :title, :class => 'form-control input-large input-with-feedback', :autofocus => true
 fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :archived, :class => 'control-label'
+  div class='controls'
+    = f.check_box :archived
+fieldset class='control-group#{error ? ' has-error' : ''}'
   = f.label :soft_deleted, :class => 'control-label'
   div class='controls'
     = f.check_box :soft_deleted

@@ -26,7 +26,6 @@ div class="tabs-content"
                       = submit_tag  pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       div class='btn btn-default btn-small cancel' = pat(:cancel)
         th class='header' = mat(:note, :title)
-        th class='header' = mat(:note, :from_evernote)
         th class='header' = mat(:note, :synchronized)
         th class='header' = mat(:note, :shared)
         th class='header' = mat(:note, :archived)
@@ -40,9 +39,6 @@ div class="tabs-content"
         tr class='list-row'
           td class='list-column list-selectable' = check_box_tag 'note_ids[]', :value => note.id, :class => 'list-selectable-checkbox'
           td class='list-column' = note.title
-          td class='list-column'
-            - if note.evernote_id.present?
-              i.icon-cloud
           td class='list-column'
             - if note.keep_synchronized
               i.icon-cloud-download
