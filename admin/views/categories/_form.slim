@@ -1,0 +1,27 @@
+- error = @category.errors.include?(:title)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :title, :class => 'control-label'
+  div class='controls'
+    = f.text_field :title, :class => 'form-control input-large input-with-feedback', :autofocus => true
+- error = @category.errors.include?(:icon)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :icon, :class => 'control-label'
+  div class='controls'
+    = f.text_field :icon, :class => 'form-control input-large input-with-feedback'
+- error = @category.errors.include?(:color)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :color, :class => 'control-label'
+  div class='controls'
+    = f.text_field :color, :class => 'form-control input-large input-with-feedback'
+- error = @category.errors.include?(:account_id)
+fieldset class='control-group#{error ? ' has-error' : ''}'
+  = f.label :account, :class => 'control-label'
+  div class='controls'
+    = f.select :account_id, :collection => @accounts, :fields => [:name, :_id.to_s], :selected => @category.account_id, :include_blank => true, :class => 'form-control input-large input-with-feedback'
+
+div class="form-actions"
+  = f.submit pat(:save), :class => 'btn btn-primary'
+  |&nbsp;
+  = f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  |&nbsp;
+  = link_to pat(:cancel), url(:categories, :index), :class => 'btn btn-default'

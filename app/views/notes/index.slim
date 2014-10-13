@@ -12,7 +12,7 @@ ul.nav.nav-tabs.nav-justified role="tablist"
     li
       = link_to url(:notes, :index, :category => category.id) do
         span.glyphicon class=("glyphicon-#{category.icon}")
-        = " #{category.label}"
+        = " #{category.title}"
 
 .list-group
   - for note in @notes do
