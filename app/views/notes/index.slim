@@ -7,6 +7,13 @@
     span.input-group-btn
       = submit_tag "Search", class: 'btn btn-default'
 
+ul.nav.nav-tabs.nav-justified role="tablist"
+  - for category in @categories do
+    li
+      = link_to url(:notes, :index, :category => category.id) do
+        span.glyphicon class=("glyphicon-#{category.icon}")
+        = " #{category.label}"
+
 .list-group
   - for note in @notes do
     = link_to url(:notes, :show, :id => note.id), class: 'list-group-item' do

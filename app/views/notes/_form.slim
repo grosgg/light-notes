@@ -8,9 +8,14 @@ fieldset class='control-group#{error ? ' has-error' : ''}'
   = f.label :body, :class => 'control-label'
   div class='controls'
     = f.text_area :body, :rows => 10, :class => 'form-control'
-- error = @note.errors.include?(:evernote_id)
+
+fieldset.control-group
+  = f.label :category, :class => 'control-label'
+  div.controls
+    = f.select :category_id, :options => @categories.map{|c| [c.label, c.id]}, :selected => @note.category_id, :include_blank => true, :class => 'form-control'
 
 - unless @note.evernote_id.blank?
+  - error = @note.errors.include?(:evernote_id)
   fieldset class='control-group#{error ? ' has-error' : ''}'
     = f.label :keep_synchronized, :class => 'control-label'
     div class='controls'

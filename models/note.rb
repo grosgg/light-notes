@@ -12,6 +12,7 @@ class Note
   field :archived,             :type => Boolean, :default => false
 
   belongs_to :account
+  belongs_to :category
   search_in :title
 
   def date_label

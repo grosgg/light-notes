@@ -14,6 +14,7 @@ class Account
 
   # Relations
   has_many :notes
+  has_many :categories
 
   # Validations
   validates_presence_of     :email, :role

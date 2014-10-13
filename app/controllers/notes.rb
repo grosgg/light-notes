@@ -2,9 +2,12 @@ LightNotes::App.controllers :notes do
   get :index, :map => '/*', :priority => :low do
     if params[:search] && !params[:search].empty?
       @notes = Note.in(id: current_account.active_notes + current_account.archived_notes).full_text_search(params[:search])
+    elsif params[:category]
+      @notes = Note.in(id: current_account.active_notes + current_account.archived_notes).where(category_id: params[:category])
     else
       @notes = Note.in(id: current_account.active_notes + current_account.just_deleted_notes).desc(:updated_at)
     end
+    @categories = current_account.categories
     render 'notes/index'
   end
 
@@ -37,6 +40,7 @@ LightNotes::App.controllers :notes do
 
   get :new do
     @note = Note.new
+    @categories = current_account.categories
     render 'notes/new'
   end
 
@@ -55,6 +59,7 @@ LightNotes::App.controllers :notes do
   get :edit, :with => :id do
     @note = Note.where(id: params[:id], account: current_account).first
     if @note
+      @categories = current_account.categories
       render 'notes/edit'
     else
       flash[:warning] = pat(:create_error, :model => 'note', :id => "#{params[:id]}")

@@ -22,6 +22,12 @@ body {
   margin-bottom: 20px;
 }
 
+.nav-justified > li > a {
+  color: #555;
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
 .panel-body > h1 {
   margin: 0px;
   font-size: 30px;
