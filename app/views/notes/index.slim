@@ -11,14 +11,23 @@ ul.nav.nav-tabs.nav-justified role="tablist"
   - for category in @categories do
     li
       = link_to url(:notes, :index, :category => category.id) do
-        span.glyphicon class=("glyphicon-#{category.icon}")
-        = " #{category.title}"
+        span.label.category-label style=("background-color: ##{category.color}")
+          span.glyphicon class=("glyphicon-#{category.icon}")
+          = " #{category.title}"
 
 .list-group
+  - if @notes.empty?
+    = link_to url(:notes, :index), class: 'list-group-item' do
+      span Couldn't find any note matching your request.
+
   - for note in @notes do
     = link_to url(:notes, :show, :id => note.id), class: 'list-group-item' do
       span.visible-xs-inline = "#{note.title[0...30] + (note.title.length > 30 ? '...' : '')} "
       span.hidden-xs = "#{note.title} "
+
+      - if note.category
+        span.label.category-label style=("background-color: ##{note.category.color}")
+          span.glyphicon class=("glyphicon-#{note.category.icon}")
 
       - if note.date_label
         span.label class=(note.date_label[:type])

@@ -28,6 +28,10 @@ body {
   border: 1px solid #ddd;
 }
 
+.category-label {
+  /*font-size: 100%;*/
+}
+
 .panel-body > h1 {
   margin: 0px;
   font-size: 30px;
