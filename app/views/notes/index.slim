@@ -4,8 +4,9 @@
 = form_tag :index, method: 'get', id: 'search-form' do
   .input-group
     = text_field_tag :search, :value => params[:search], class: 'form-control'
-    span.input-group-btn
+    div.input-group-btn
       = submit_tag "Search", class: 'btn btn-default'
+      / = link_to 'New', url(:notes, :new), class: 'btn btn-default'
 
 .btn-group.btn-group-justified
   - for category in @categories do
@@ -54,6 +55,6 @@ div
   = link_to url(:notes, :new), class: 'btn btn-default btn-block' do
     span.glyphicon.glyphicon-pencil
     |  New note
-  button data-loading-text= "Fetching notes... Please wait." data-url= "#{url(:evernotes, :index)}" id='btn-evernote-sync' class='btn btn-default btn-block'
-    span.glyphicon.glyphicon-cloud
-    |  Import from Evernote
+/   button data-loading-text= "Fetching notes... Please wait." data-url= "#{url(:evernotes, :index)}" id='btn-evernote-sync' class='btn btn-default btn-block'
+/     span.glyphicon.glyphicon-cloud
+/     |  Import from Evernote
