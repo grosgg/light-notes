@@ -7,13 +7,12 @@
     span.input-group-btn
       = submit_tag "Search", class: 'btn btn-default'
 
-ul.nav.nav-tabs.nav-justified role="tablist"
+.btn-group.btn-group-justified
   - for category in @categories do
-    li
-      = link_to url(:notes, :index, :category => category.id) do
-        span.label.category-label style=("background-color: ##{category.color}")
-          span.glyphicon class=("glyphicon-#{category.icon}")
-          = " #{category.title}"
+    = link_to url(:notes, :index, :category => category.id), class: 'btn btn-default' do
+      span.label.category-label style=("background-color: ##{category.color}")
+        span.glyphicon class=("glyphicon-#{category.icon}")
+        span.hidden-xs = " #{category.title}"
 
 .list-group
   - if @notes.empty?
