@@ -16,9 +16,9 @@ class Note
   search_in :title
 
   def date_label
-    if (self.created_at + 2.days) > DateTime.now
+    if self.created_at > (DateTime.now - 2.days)
       { text: 'pencil', type: 'label-primary' }
-    elsif (self.updated_at + 2.days) > DateTime.now
+    elsif self.updated_at > (DateTime.now - 2.days)
       { text: 'pencil', type: 'label-default' }
     end
   end
