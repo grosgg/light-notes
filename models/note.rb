@@ -16,11 +16,11 @@ class Note
   search_in :title
 
   def date_label
-    if self.created_at > (DateTime.now - 2.days)
-      { text: 'pencil', type: 'label-primary' }
-    elsif self.updated_at > (DateTime.now - 2.days)
-      { text: 'pencil', type: 'label-default' }
-    end
+    # if self.created_at > (DateTime.now - 2.days)
+    #   { text: 'pencil', type: 'label-primary' }
+    # elsif self.updated_at > (DateTime.now - 2.days)
+    #   { text: 'pencil', type: 'label-default' }
+    # end
   end
 
   def self.active(current_account)
