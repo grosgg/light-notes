@@ -9,3 +9,4 @@ db/*.db
 .*.sw*
 config/evernote.rb
 config/secret.rb
+.bundle

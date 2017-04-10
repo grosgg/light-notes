@@ -25,25 +25,25 @@ gem 'mongoid_search', '~> 0.3.2'
 # gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.2'
+gem 'padrino'
 
 # Markdown gems
-gem 'redcarpet', '~> 3.1.2'
-gem 'reverse_markdown', '~> 0.5.1'
+gem 'redcarpet'
+gem 'reverse_markdown'
 
 # Evernote
-gem 'evernote_oauth', '~> 0.2.3'
+gem 'evernote_oauth'
 
 # PDF Export
-gem 'pdfkit', '~> 0.6.2'
+gem 'pdfkit'
 
 # CRON tasks
-gem 'whenever', '~> 0.9.2'
+gem 'whenever'
 
 group :development do
   # Deployment
-  gem 'byebug', '~> 3.2.0'
-  gem 'capistrano', '~> 3.2.1'
+  gem 'byebug'
+  gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'

@@ -1,7 +1,7 @@
 - if Note.nin(evernote_id: [nil, '']).in(title: [nil, '']).count > 0
   .alert.alert-info Some notes are waiting to be imported from Evernote. Please refresh this page in a few minutes.
 
-= form_tag :index, method: 'get', id: 'search-form' do
+= form_tag 'index', method: 'get', id: 'search-form' do
   .input-group
     = text_field_tag :search, :value => params[:search], class: 'form-control'
     div.input-group-btn
