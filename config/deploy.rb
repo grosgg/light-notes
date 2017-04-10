@@ -76,3 +76,31 @@ namespace :deploy do
 
 end
 
+desc "Open the rails console on each of the remote servers"
+task :console do
+  on roles(:app) do |host| #does it for each host, bad.
+    rails_env = fetch(:stage)
+    execute_interactively "RAILS_ENV=#{rails_env} bundle exec rails c"
+  end
+end
+
+desc "Open the rails log"
+task :log do
+  on roles(:app) do |host| #does it for each host, bad.
+    rails_env = fetch(:stage)
+    execute_interactively "tail -f log/#{rails_env}.log"
+  end
+end
+
+desc "Unicorn logs"
+task :unicorn_log do
+  on roles(:app) do |host| #does it for each host, bad.
+    rails_env = fetch(:stage)
+    execute_interactively "tail -f log/unicorn.stderr.log"
+  end
+end
+
+def execute_interactively(command)
+  exec %Q(ssh -t deploy@#{@host.hostname} "/bin/bash --login -c 'cd #{current_path} && #{command}'")
+end
+
