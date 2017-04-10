@@ -1,7 +1,7 @@
 lock '3.8.0'
 
 set :application, 'light-notes'
-set :repo_url, 'git@github.com:grosgg/light-notes.git'
+set :repo_url, 'https://github.com/grosgg/light-notes.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -39,8 +39,8 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby padrino}
 set :rbenv_roles, :all # default value
 
-set :whenever_roles,         ->{ :app }
-set :whenever_environment,   ->{ fetch :stage }
+# set :whenever_roles,         ->{ :app }
+# set :whenever_environment,   ->{ fetch :stage }
 
 namespace :deploy do
 
